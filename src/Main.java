@@ -2,45 +2,116 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
+        UserService userService = new UserService(); // Assuming you have this
 
-        while(true){
-            System.out.println("\n1. Signup\n2. Login\n3. Exit");
-            int choice = sc.nextInt();
-            sc.nextLine(); // consume newline
+        System.out.println("Welcome to Airline Management System");
+        System.out.println("Select User Type:");
+        System.out.println("1. Passenger");
+        System.out.println("2. Staff");
+        System.out.print("Enter your choice (1 or 2): ");
+        int userType = scanner.nextInt();
+        scanner.nextLine(); // Consume newline
+
+        if (userType == 1) {
+            System.out.println("1. Login as Passenger");
+            System.out.println("2. Signup as Passenger");
+            System.out.print("Enter your choice: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
 
             if (choice == 1) {
-                System.out.print("Enter Passenger/Staff ID (this will be your username): ");
-                String userID = sc.nextLine();
-                System.out.print("Enter password: ");
-                String password = sc.nextLine();
-                System.out.print("Are you passenger or staff? ");
-                String role = sc.nextLine().toLowerCase();
-
-                UserService.registerUser(userID, password, role);
-            }
-            else if (choice == 2) {
-                System.out.print("Enter your ID (Passenger/Staff): ");
-                String userID = sc.nextLine();
-                System.out.print("Enter password: ");
-                String password = sc.nextLine();
-
-                String role = UserService.loginUser(userID, password);
-
-                if (role != null) {
-                    if (role.equals("passenger")) {
-                        System.out.println("passenger");
-                    } else if (role.equals("staff")) {
-                        System.out.println("staff");
-                    }
+                if (userService.loginPassenger(scanner)) {
+//                    passengerDashboard(scanner, userService);
+                    System.out.println("success");
                 }
-            }
-            else{
-                sc.close();
+            } else {
+                userService.signupPassenger(scanner);
             }
 
+        } else if (userType == 2) {
+            System.out.println("1. Login as Staff");
+            System.out.println("2. Signup as Staff");
+            System.out.print("Enter your choice: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+
+            if (choice == 1) {
+                if (userService.loginStaff(scanner)) {
+//                    staffDashboard(scanner, userService);
+                    System.out.println("success");
+                }
+            } else {
+                userService.signupStaff(scanner);
+            }
+        } else {
+            System.out.println("Invalid input. Exiting...");
         }
 
+        scanner.close();
     }
-}
 
+    // Passenger dashboard
+//    private static void passengerDashboard(Scanner scanner, UserService userService) {
+//        while (true) {
+//            System.out.println("\n--- Passenger Dashboard ---");
+//            System.out.println("1. Book Flight");
+//            System.out.println("2. Cancel Flight");
+//            System.out.println("3. View Booking Data");
+//            System.out.println("4. Exit");
+//            System.out.print("Enter your choice: ");
+//
+//            int option = scanner.nextInt();
+//            scanner.nextLine(); // Consume newline
+//
+//            switch (option) {
+//                case 1:
+//                    userService.bookFlight(scanner);
+//                    break;
+//                case 2:
+//                    userService.cancelFlight(scanner);
+//                    break;
+//                case 3:
+//                    userService.fetchBookingData(scanner);
+//                    break;
+//                case 4:
+//                    System.out.println("Logging out...");
+//                    return;
+//                default:
+//                    System.out.println("Invalid choice!");
+//            }
+//        }
+//    }
+//
+//    // Staff dashboard
+//    private static void staffDashboard(Scanner scanner, UserService userService) {
+//        while (true) {
+//            System.out.println("\n--- Staff Dashboard ---");
+//            System.out.println("1. View Assigned Flights");
+//            System.out.println("2. Take Leave");
+//            System.out.println("3. Fetch Work Data");
+//            System.out.println("4. Exit");
+//            System.out.print("Enter your choice: ");
+//
+//            int option = scanner.nextInt();
+//            scanner.nextLine(); // Consume newline
+//
+//            switch (option) {
+//                case 1:
+//                    userService.viewAssignedFlights(scanner);
+//                    break;
+//                case 2:
+//                    userService.takeLeave(scanner);
+//                    break;
+//                case 3:
+//                    userService.fetchWorkData(scanner);
+//                    break;
+//                case 4:
+//                    System.out.println("Logging out...");
+//                    return;
+//                default:
+//                    System.out.println("Invalid choice!");
+//            }
+//        }
+//    }
+}
