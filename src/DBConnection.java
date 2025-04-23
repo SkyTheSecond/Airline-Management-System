@@ -3,7 +3,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnection {
-    private static final String URL = "jdbc:mysql://127.0.0.1:3306/airlinemanagement";
+    private static final String URL = "jdbc:mysql://127.0.0.1:3306/AirlineManagement";
     private static final String USER = "root"; // your MySQL username
     private static final String PASSWORD = "root"; // your MySQL password
 

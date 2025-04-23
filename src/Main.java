@@ -51,7 +51,7 @@ public class Main {
         scanner.close();
     }
 
-    // Passenger dashboard
+//     Passenger dashboard
 //    private static void passengerDashboard(Scanner scanner, UserService userService) {
 //        while (true) {
 //            System.out.println("\n--- Passenger Dashboard ---");

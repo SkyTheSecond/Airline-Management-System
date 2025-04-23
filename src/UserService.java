@@ -138,4 +138,50 @@ public class UserService {
             return false;
         }
     }
+
+//    public void bookFlight(Scanner scanner) {
+//        System.out.print("Enter Passenger ID: ");
+//        String passengerID = scanner.nextLine();
+//
+//        System.out.print("Enter Flight ID to book: ");
+//        String flightID = scanner.nextLine();
+//
+//        try (Connection conn = DBConnection.getConnection()) {
+//
+//            // 1. Check if flight exists and has available seats
+//            String checkFlightQuery = "SELECT availableSeats FROM Flight WHERE flightID = ?";
+//            PreparedStatement checkStmt = conn.prepareStatement(checkFlightQuery);
+//            checkStmt.setString(1, flightID);
+//            ResultSet rs = checkStmt.executeQuery();
+//
+//            if (rs.next()) {
+//                int availableSeats = rs.getInt("availableSeats");
+//                if (availableSeats > 0) {
+//
+//                    // 2. Insert into Passenger_Flight
+//                    String insertBooking = "INSERT INTO Passenger_Flight (passengerID, flightID) VALUES (?, ?)";
+//                    PreparedStatement insertStmt = conn.prepareStatement(insertBooking);
+//                    insertStmt.setString(1, passengerID);
+//                    insertStmt.setString(2, flightID);
+//                    insertStmt.executeUpdate();
+//
+//                    // 3. Update available seats in Flight
+//                    String updateSeats = "UPDATE Flight SET availableSeats = availableSeats - 1 WHERE flightID = ?";
+//                    PreparedStatement updateStmt = conn.prepareStatement(updateSeats);
+//                    updateStmt.setString(1, flightID);
+//                    updateStmt.executeUpdate();
+//
+//                    System.out.println("✅ Flight booked successfully for passenger: " + passengerID);
+//                } else {
+//                    System.out.println("❌ No seats available for flight ID: " + flightID);
+//                }
+//            } else {
+//                System.out.println("❌ Flight ID not found.");
+//            }
+//
+//        } catch (SQLException e) {
+//            System.out.println("❌ Error booking flight: " + e.getMessage());
+//        }
+//    }
+
 }
