@@ -24,6 +24,7 @@ dependencies {
 
     //This dependency is used for Object mapping
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.3'
+    implementation 'org.mindrot:jbcrypt:0.4'
 
 }
 
@@ -36,5 +37,5 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = 'org.example.App'
+    mainClass = 'App'
 }

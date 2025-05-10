@@ -16,6 +16,8 @@ public class Plane {
 
     private List<String> airports;
 
+    public Plane(){}
+
     public Plane(String planeId, String planeNumber, List<List<Integer>> seats, Map<String, Time> airportTimes, List<String> airports){
         this.planeId = planeId;
         this.planeNumber = planeNumber;
@@ -23,6 +25,7 @@ public class Plane {
         this.airportTimes = airportTimes;
         this.airports = airports;
     }
+
 
     public List<String> getAirports(){
         return airports;
@@ -36,6 +39,37 @@ public class Plane {
         this.seats = seats;
     }
 
-    public Strng getPl
+    public String getPlaneId(){
+        return planeId;
+    }
+
+    public Map<String, Time> getAirportTimes(){
+        return airportTimes;
+    }
+
+    public String getPlaneNumber(){
+        return planeNumber;
+    }
+
+    public void setPlaneId(String planeId){
+        this.planeId = planeId;
+    }
+
+    public void setPlaneNumber(String planeNumber){
+        this.planeNumber = planeNumber;
+    }
+
+    public void setAirportTimes(Map<String, Time> airportTimes){
+        this.airportTimes = airportTimes;
+    }
+
+    public void setAirports(List<String> airports){
+        this.airports = airports;
+    }
+
+    public String getPlaneInfo(){
+        return String.format("Plane ID: %s Plane No: %s", planeId, planeNumber);
+    }
+
 
 }
